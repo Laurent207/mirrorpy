@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tags>
+ <rfid id="000008d0021a053b48212f000000">
+  <descriptif>Nanoztag gris</descriptif>
+  <etat>actif</etat>
+  <action>pose</action>
+  <url><![CDATA[http://192.168.0.199:8080/json.htm?type=command&param=switchlight&idx=25&switchcmd=Off]]></url>
+  <commentaire>Ouvre les volets du bureau grâce à l'API de domoticz</commentaire>
+ </rfid>
+ <rfid id="000008d0021a053b48212f000000">
+  <descriptif>Nanoztag gris</descriptif>
+  <etat>actif</etat>
+  <action>retire</action>
+  <url><![CDATA[http://192.168.0.199:8080/json.htm?type=command&param=switchlight&idx=25&switchcmd=Stop]]></url>
+  <commentaire>Stop les volets du bureau grâce à l'API de domoticz</commentaire>
+ </rfid>
+ <rfid id="000008d0021a053b481b4e000000">
+  <descriptif>Nanoztag noir</descriptif>
+  <etat>actif</etat>
+  <action>pose</action>
+  <url><![CDATA[http://192.168.0.199:8080/json.htm?type=command&param=switchlight&idx=25&switchcmd=On]]></url>
+  <commentaire>Ferme les volets du bureau grâce à l'API de domoticz</commentaire>
+ </rfid>
+ <rfid id="0000047ffe699500000000000000">
+  <descriptif>Skylanders - feu</descriptif>
+  <etat>inactif</etat>
+  <action>retire</action>
+  <url><![CDATA[http://192.168.0.1:8080/sarah/parle?phrase=skylanders]]></url>
+  <commentaire>Demande à S.A.R.A.H. l'heure</commentaire>
+ </rfid>
+ <rfid id="00000404cd9f3a00000000000000">
+  <descriptif>Disney infinity 2.0 : Mickey</descriptif>
+  <etat>actif</etat>
+  <action>retire</action>
+  <url><![CDATA[192.168.0.1:8080/sarah/time]]></url>
+  <commentaire>Test avec une url incorecte</commentaire>
+ </rfid>
+</tags>
