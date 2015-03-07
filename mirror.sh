@@ -38,34 +38,6 @@ do_stop () {
 
 case "$1" in
   start|stop)
-    d_${1}
-    ;;
-
-  restart|reload|force-reload)
-    do_stop
-    do_start
-    ;;
-
-  force-stop)
-    do_stop
-    killall -q $DEAMON_NAME || true
-    sleep 2
-    killall -q -9 $DEAMON_NAME || true
-    ;;
-
-  status)
-    status_of_proc "$DEAMON_NAME" "$DAEMON"
-    "system-wide $DEAMON_NAME" && exit 0 || exit $?
-  log_end_msg $?
-}
-do_stop () {
-  log_daemon_msg "Arrêt du service $DEAMON_NAME"
-  start-stop-daemon --stop --pidfile $PIDFILE --retry 10
-  log_end_msg $?
-}
-
-case "$1" in
-  start|stop)
     do_${1}
     ;;
 
