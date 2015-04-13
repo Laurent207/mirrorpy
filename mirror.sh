@@ -27,7 +27,7 @@ PIDFILE=/var/run/$DAEMON_NAME.pid
 
 do_start () {
   log_daemon_msg "Démarrage du service $DEAMON_NAME"
-  start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USE$
+  start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USER --exec $DAEMON
   log_end_msg $?
 }
 do_stop () {
