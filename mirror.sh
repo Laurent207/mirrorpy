@@ -14,9 +14,9 @@ DIR="/home/pi/mirrorpy"
 #nom du fichier qui contient le script python
 DAEMON=$DIR/mirror.py
 #argument à utiliser par le programme
-DEAMON_OPT=""
+DAEMON_OPT=""
 #nom du service
-DEAMON_NAME="mirrorpy"
+DAEMON_NAME="mirrorpy"
 #utilisateur du programme
 DAEMON_USER="root"
 
@@ -26,12 +26,12 @@ PIDFILE=/var/run/$DAEMON_NAME.pid
 . /lib/lsb/init-functions
 
 do_start () {
-  log_daemon_msg "Démarrage du service $DEAMON_NAME"
+  log_daemon_msg "Démarrage du service $DAEMON_NAME"
   start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USER --exec $DAEMON
   log_end_msg $?
 }
 do_stop () {
-  log_daemon_msg "Arrêt du service $DEAMON_NAME"
+  log_daemon_msg "Arrêt du service $DAEMON_NAME"
   start-stop-daemon --stop --pidfile $PIDFILE --retry 10
   log_end_msg $?
 }
@@ -48,9 +48,9 @@ case "$1" in
 
   force-stop)
     do_stop
-    killall -q $DEAMON_NAME || true
+    killall -q $DAEMON_NAME || true
     sleep 2
-    killall -q -9 $DEAMON_NAME || true
+    killall -q -9 $DAEMON_NAME || true
     ;;
 
   status)
@@ -58,7 +58,7 @@ case "$1" in
     ;;
 
   *)
-    echo "Utilisation : /etc/init.d/$DEAMON_NAME {start|stop|force-stop|restart|reload|force-reload|status}"
+    echo "Utilisation : /etc/init.d/$DAEMON_NAME {start|stop|force-stop|restart|reload|force-reload|status}"
     exit 1
     ;;
 
