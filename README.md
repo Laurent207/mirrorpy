@@ -26,48 +26,42 @@ Pour vérifier que le script fonctionne bien. S'il y a une erreur, ne pas aller 
 
 *sudo ./mirror.py*
 
-Copiez le fichier du service dans le répertoire
+Créer un lien symbolique vers le script du service dans le répertoire
 
-*sudo cp /home/pi/mirrorpy/mirror.sh /etc/init.d*
+*sudo ln -s /home/pi/mirrorpy/mirror.py /etc/init.d/mirrorpy*
 
 Editer le fichier du service pour vérifier que les chemins sont bon (la commande linux qui permet de connaitre le chemin complet ou l'on se situe est : pwd
 
-Edition du fichier du service(daemon). Modifiez DIR, DAEMON, DEAMON_OPT, DEAMON_NAME et DAEMON_USER (ligne 13, 15, 17, 19 et 21), si nécessaire.
+Edition du fichier du service(daemon). Modifiez DAEMON, DEAMON_NAME et DAEMON_USER (ligne 4, 5 et 6), si nécessaire.
 
-*sudo nano /etc/init.d/mirror.sh*
+*sudo nano /etc/init.d/mirrorpy*
 
 Si vous avez modifier le fichier, faire ALT+'x', puis 'o' pour oui ou 'y' pour yes (ça dépand de la langue de l'os du rpi, puis 'entrée'
 
 On donne les droits d'exécution au service
 
-*sudo chmod +x /etc/init.d/mirror.sh*
+*sudo chmod +x /etc/init.d/mirrorpy*
 
 On test l'exécution du fichier du service
 
-*sudo /etc/init.d/mirror.sh start*
+*sudo /etc/init.d/mirrorpy start*
 
 Normalement, vous devez voir : [ ok ] Démarrage du service mirrorpy:.
 S'il y a une erreur, ne pas aller plus loin et contacter laurent207 sur http://nabaztag.forumactif.fr/t15046-script-python-pour-piloter-un-mirror-pour-raspberry-pi ou sur le github du projet.
 
 Voici la liste des commandes pour gérer le service :
 
-*sudo /etc/init.d/mirror.sh start*
+*sudo /etc/init.d/mirrorpy start*
 
-*sudo /etc/init.d/mirror.sh status*
+*sudo /etc/init.d/mirrorpy status*
 
-*sudo /etc/init.d/mirror.sh stop*
+*sudo /etc/init.d/mirrorpy stop*
 
-*sudo /etc/init.d/mirror.sh force-stop*
-
-*sudo /etc/init.d/mirror.sh restart*
-
-*sudo /etc/init.d/mirror.sh reload*
-
-*sudo /etc/init.d/mirror.sh force-reload*
+*sudo /etc/init.d/mirrorpy restart*
 
 Enfin cette ligne sert à lancer automatiquement le service au démarrage du raspberry pi
 
-*sudo update-rc.d mirror.sh defaults*
+*sudo update-rc.d mirrorpy defaults 99*
 
 Modifier le fichier mirror.xml comme vous le souhaitez pour ajouter vos puces . Pour l'instant il n'y a aucun contrôle sur l'intégrité du fichier xml, donc soyez attentif à vos modifications.
 
