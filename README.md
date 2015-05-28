@@ -24,7 +24,7 @@ On donne les droits d'exécution au script
 
 Pour vérifier que le script fonctionne bien. S'il y a une erreur, ne pas aller plus loin et contacter laurent207 sur http://nabaztag.forumactif.fr/t15046-script-python-pour-piloter-un-mirror-pour-raspberry-pi ou sur le github du projet.
 
-*sudo ./home/pi/mirrorpy/mirror.py*
+*sudo python /home/pi/mirrorpy/mirror.py*
 
 Créer un lien symbolique vers le script du service dans le répertoire
 
