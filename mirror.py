@@ -6,7 +6,7 @@ import socket #pour afficher gérer les sockets (utilisé ici que pour afficher 
 from xml.dom.minidom import parse #pour pouvoir parser un fichier XML  avec minidom
 
 #ouvre le fichier XML en utilisant le parser 'minidom'
-DOMTree = parse("mirror.xml")
+DOMTree = parse("/home/pi/mirrorpy/mirror.xml")
 #construit l'arbre de la structure du fichier XML et le stock dans une variable
 collection = DOMTree.documentElement
 #récupére tous les éléments qui ont pour tag 'rfid' de l'arbre
