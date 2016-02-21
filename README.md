@@ -26,6 +26,7 @@ Pour vérifier que le script fonctionne bien. S'il y a une erreur, ne pas aller 
 
 *sudo python /home/pi/mirrorpy/mirror.py*
 
+#Sous debian Wheezy
 Créer un lien symbolique vers le script du service dans le répertoire
 
 *sudo ln -s /home/pi/mirrorpy/mirrorpy /etc/init.d/mirrorpy*
@@ -47,7 +48,6 @@ On test l'exécution du fichier du service
 *sudo /etc/init.d/mirrorpy start*
 
 Normalement, vous devez voir : [ ok ] Démarrage du service mirrorpy:.
-S'il y a une erreur, ne pas aller plus loin et contacter laurent207 sur http://nabaztag.forumactif.fr/t15046-script-python-pour-piloter-un-mirror-pour-raspberry-pi ou sur le github du projet.
 
 Voici la liste des commandes pour gérer le service :
 
@@ -62,6 +62,31 @@ Voici la liste des commandes pour gérer le service :
 Enfin cette ligne sert à lancer automatiquement le service au démarrage du raspberry pi
 
 *sudo update-rc.d mirrorpy defaults 99*
+
+#Sous debian Jessie
+Copier le script du service dans le répertoire
+
+*sudo cp /home/pi/mirrorpy/mirrorpy.service /lib/systemd/system/mirrorpi.service*
+
+Mettez les droits sur le fichier et autoriser le dans Systemd
+
+*sudo chmod 644 /lib/systemd/system/mirrorpi.service*
+
+*sudo systemctl daemon-reload*
+
+*sudo systemctl enable myscript.service*
+
+Voici la liste des commandes pour gérer le service :
+
+*sudo systemctl status mirrorpi.service*
+
+*sudo systemctl start mirrorpi.service*
+
+*sudo systemctl stop mirrorpi.service*
+
+*sudo systemctl restart mirrorpi.service*
+
+S'il y a une erreur, ne pas aller plus loin et contacter laurent207 sur http://nabaztag.forumactif.fr/t15046-script-python-pour-piloter-un-mirror-pour-raspberry-pi ou sur le github du projet.
 
 Modifier le fichier mirror.xml comme vous le souhaitez pour ajouter vos puces . Pour l'instant il n'y a aucun contrôle sur l'intégrité du fichier xml, donc soyez attentif à vos modifications.
 
