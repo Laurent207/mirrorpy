@@ -5,7 +5,7 @@ After=multi-user.target
 [Service]
 Type=idle
 ExecStart=/usr/bin/python /home/pi/mirrorpy/mirror.py &
-Restart=restart-always
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
