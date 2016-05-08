@@ -74,7 +74,7 @@ Mettez les droits sur le fichier et autoriser le dans Systemd
 
 *sudo systemctl daemon-reload*
 
-*sudo systemctl enable myscript.service*
+*sudo systemctl enable mirrorpi.service*
 
 Voici la liste des commandes pour gérer le service :
 
