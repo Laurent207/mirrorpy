@@ -4,6 +4,7 @@ import binascii #pour convertir l'hexa en string
 from urllib2 import Request, urlopen, URLError, HTTPError #pour pouvoir appeler une url
 import socket #pour afficher gérer les sockets (utilisé ici que pour afficher une erreur de timeout)
 from xml.dom.minidom import parse #pour pouvoir parser un fichier XML  avec minidom
+import base64
 
 #ouvre le fichier XML en utilisant le parser 'minidom'
 DOMTree = parse("/home/pi/mirrorpy/mirror.xml")
@@ -23,9 +24,11 @@ for puce in puces:
   etat = puce.getElementsByTagName('etat')[0].childNodes[0].nodeValue
   action = puce.getElementsByTagName('action')[0].childNodes[0].nodeValue
   url = puce.getElementsByTagName('url')[0].childNodes[0].nodeValue
+  username = puce.getElementsByTagName('login')[0].childNodes[0].nodeValue
+  password = puce.getElementsByTagName('password')[0].childNodes[0].nodeValue
 #  commentaire = puce.getElementsByTagName('commentaire')[0].childNodes[0].nodeValue
   #detail_puce = [id_puce, [descriptif, url, commentaire]]
-  detail_puce = [id_puce, url]
+  detail_puce = [id_puce, url, username, password]
 
   if etat == 'actif':
     if action == 'pose':
@@ -58,9 +61,11 @@ while erreur_generale == False:
 
       puce_definie_dans_xml = False
       #'puces_posee' va prendre les valeurs successives des éléments de 'liste_puces_posee'
-      for i, puces_posee in liste_puces_posee:
+      for i, puces_posee, username, password in liste_puces_posee:
         if rfid_id == format(i):
           requete = Request(format(puces_posee))
+          base64string = base64.b64encode('%s:%s' % (username, password))
+          requete.add_header("Authorization", "Basic %s" % base64string)  
           try:
             #on essaye d'appeler la requête
             url = urlopen(requete, timeout = 1)
@@ -86,9 +91,11 @@ while erreur_generale == False:
 
       puce_definie_dans_xml = False
       #'puces_retire' va prendre les valeurs successives des éléments de 'liste_puces_retire'
-      for i, puces_retire in liste_puces_retire:
+      for i, puces_retire, username, password in liste_puces_retire:
         if rfid_id == format(i):
           requete = Request(format(puces_retire))
+          base64string = base64.b64encode('%s:%s' % (username, password))
+          requete.add_header("Authorization", "Basic %s" % base64string)
           try:
             #on essaye d'appeler la requête
             url = urlopen(requete, timeout = 1)
