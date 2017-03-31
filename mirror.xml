@@ -7,6 +7,15 @@
   <url><![CDATA[http://192.168.0.199:8080/json.htm?type=command&param=switchlight&idx=25&switchcmd=Off]]></url>
   <commentaire>Ouvre les volets du bureau grâce à l'API de domoticz</commentaire>
  </rfid>
+ <rfid id="000008e0025a55b4b0dac000000">
+  <descriptif>Nanoztag jaune</descriptif>
+  <etat>actif</etat>
+  <action>pose</action>
+  <url><![CDATA[http://192.168.1.100:8080/api/xxx/xxxx/xxx]]></url>
+  <login>admin</login>
+  <password>mon mot de passe</password>
+  <commentaire>Test allumage du bandeau de LED</commentaire>
+ </rfid>
  <rfid id="000008d0021a053b48212f000000">
   <descriptif>Nanoztag gris</descriptif>
   <etat>actif</etat>
